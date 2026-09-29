@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Financeiro</title>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="masterhead">
+        <div class="container content-width">
+            <div class="eyebrow">Simulador Financeiro</div>
+            <h1 class="title">Planejamento 50-30-20</h1>
+            <p class="subtitle">Informe a sua renda mensal e o que você já gastou em cada categoria. O Simulador calcula os percentuais reais e compara com a regra recomendada.</p>
+
+            <div class="rule-cards">
+                <article class="rule-card rule-card--needs">
+                    <span class="rule-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                            <path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1v-9.5Z"/>
+                        </svg>
+                    </span>
+                    <div>
+                        <div class="rule-pct">50%</div>
+                        <div class="rule-name">Necessidades</div>
+                    </div>
+                </article>
+                <article class="rule-card rule-card--wants">
+                    <span class="rule-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                            <path d="M6 8h12l-1.2 11.2A2 2 0 0 1 14.81 21H9.19a2 2 0 0 1-1.99-1.8L6 8Z"/>
+                            <path d="M9 8V7a3 3 0 0 1 6 0v1"/>
+                        </svg>
+                    </span>
+                    <div>
+                        <div class="rule-pct">30%</div>
+                        <div class="rule-name">Desejos</div>
+                    </div>
+                </article>
+                <article class="rule-card rule-card--save">
+                    <span class="rule-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                            <path d="M16 11.5a6.5 6.5 0 1 1-9.7-5.7C7.7 3.3 10 2 12.5 2c1.2 0 2.3.3 3.3.8"/>
+                            <path d="M16 8h3v3"/>
+                            <circle cx="9.2" cy="11.2" r=".7" fill="currentColor" stroke="none"/>
+                            <path d="M7.5 16.5c1.2 1.2 2.7 1.8 4.5 1.8s3.3-.6 4.5-1.8"/>
+                        </svg>
+                    </span>
+                    <div>
+                        <div class="rule-pct">20%</div>
+                        <div class="rule-name">Poupança</div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container content-width">
+            <div class="row g-4 align-items-stretch">
+
+                <div class="col-lg-5">
+                    <div class="panel h-100">
+                        <div class="panel-head">
+                            <h2>Seus Dados</h2>
+                            <span class="num">01 · Entrada</span>
+                        </div>
+                        <div class="panel-body">
+                            <form id="budgetForm" novalidate>
+                                <div class="field">
+                                    <label class="field-label" for="renda">
+                                        <span class="field-title">
+                                            <span class="field-icon" aria-hidden="true">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/><path d="M8 15h2"/></svg>
+                                            </span>
+                                            Renda Mensal
+                                        </span>
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">R$</span>
+                                        <input type="number" min="0" step="0.01" class="form-control" id="renda" placeholder="0,00" required>
+                                    </div>
+                                </div>
+
+                                <div class="field">
+                                    <label class="field-label" for="necessidades">
+                                        <span class="field-title">
+                                            <span class="field-icon" aria-hidden="true">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1v-9.5Z"/></svg>
+                                            </span>
+                                            Total gasto com necessidades
+                                        </span>
+                                        <span class="target">alvo 50%</span>
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">R$</span>
+                                        <input type="number" min="0" step="0.01" class="form-control" id="necessidades" placeholder="0,00" required>
+                                    </div>
+                                </div>
+
+                                <div class="field">
+                                    <label class="field-label" for="desejos">
+                                        <span class="field-title">
+                                            <span class="field-icon" aria-hidden="true">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 8h12l-1.2 11.2A2 2 0 0 1 14.81 21H9.19a2 2 0 0 1-1.99-1.8L6 8Z"/><path d="M9 8V7a3 3 0 0 1 6 0v1"/></svg>
+                                            </span>
+                                            Total gasto com desejos
+                                        </span>
+                                        <span class="target">alvo 30%</span>
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">R$</span>
+                                        <input type="number" min="0" step="0.01" class="form-control" id="desejos" placeholder="0,00" required>
+                                    </div>
+                                </div>
+
+                                <div class="field">
+                                    <label class="field-label" for="poupanca">
+                                        <span class="field-title">
+                                            <span class="field-icon" aria-hidden="true">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M16 11.5a6.5 6.5 0 1 1-9.7-5.7C7.7 3.3 10 2 12.5 2c1.2 0 2.3.3 3.3.8"/><path d="M16 8h3v3"/><circle cx="9.2" cy="11.2" r=".7" fill="currentColor" stroke="none"/><path d="M7.5 16.5c1.2 1.2 2.7 1.8 4.5 1.8s3.3-.6 4.5-1.8"/></svg>
+                                            </span>
+                                            Valor destinado a poupança
+                                        </span>
+                                        <span class="target">alvo 20%</span>
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">R$</span>
+                                        <input type="number" min="0" step="0.01" class="form-control" id="poupanca" placeholder="0,00" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-actions">
+                                    <button type="submit" class="btn-calc">Calcular</button>
+                                    <button type="button" id="resetBtn" class="btn-reset">Limpar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-7">
+                    <div class="panel h-100">
+                        <div class="panel-head">
+                            <h2>Diagnóstico</h2>
+                            <span class="num">02 · Resultados</span>
+                        </div>
+                        <div class="panel-body" id="resultsArea">
+                            <div class="empty-state" id="emptyState">
+                                <div class="glyph">◎</div>
+                                Preencha o formulário e clique em <strong>Calcular</strong> para ver o diagnóstico do seu orçamento.
+                            </div>
+                            <div id="resultsContent" class="d-none">
+                                <div class="summary-grid">
+                                    <div>
+                                        <div class="k">Renda</div>
+                                        <div class="v" id="sumRenda">R$ 0</div>
+                                    </div>
+                                    <div>
+                                        <div class="k">Alocado</div>
+                                        <div class="v" id="sumAlocado">R$ 0</div>
+                                    </div>
+                                    <div>
+                                        <div class="k">Saldo</div>
+                                        <div class="v" id="sumSaldo">R$ 0</div>
+                                    </div>
+                                </div>
+
+                                <div class="chart-meta">
+                                    <span><strong>Meta recomendada</strong> 50 / 30 / 20</span>
+                                    <span><strong>Distribuição real</strong> valores informados</span>
+                                </div>
+
+                                <div class="donut-board">
+                                    <div class="metric metric--needs" id="metricNecessidades">
+                                        <span class="metric-icon" aria-hidden="true">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1v-9.5Z"/></svg>
+                                        </span>
+                                        <div>
+                                            <div class="metric-name">Necessidades</div>
+                                            <div class="metric-pct" data-pct>0,0%</div>
+                                            <div class="metric-value" data-value>R$ 0</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="metric metric--wants" id="metricDesejos">
+                                        <span class="metric-icon" aria-hidden="true">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 8h12l-1.2 11.2A2 2 0 0 1 14.81 21H9.19a2 2 0 0 1-1.99-1.8L6 8Z"/><path d="M9 8V7a3 3 0 0 1 6 0v1"/></svg>
+                                        </span>
+                                        <div>
+                                            <div class="metric-name">Desejos</div>
+                                            <div class="metric-pct" data-pct>0,0%</div>
+                                            <div class="metric-value" data-value>R$ 0</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="chart-wrap">
+                                        <canvas id="donutChart" aria-label="Distribuição da renda"></canvas>
+                                        <div class="chart-center">
+                                            <div class="chart-renda" id="donutRenda">R$ 0</div>
+                                            <div class="chart-label">Renda mensal</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="metric metric--save" id="metricPoupanca">
+                                        <span class="metric-icon" aria-hidden="true">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M16 11.5a6.5 6.5 0 1 1-9.7-5.7C7.7 3.3 10 2 12.5 2c1.2 0 2.3.3 3.3.8"/><path d="M16 8h3v3"/><circle cx="9.2" cy="11.2" r=".7" fill="currentColor" stroke="none"/><path d="M7.5 16.5c1.2 1.2 2.7 1.8 4.5 1.8s3.3-.6 4.5-1.8"/></svg>
+                                        </span>
+                                        <div>
+                                            <div class="metric-name">Poupança</div>
+                                            <div class="metric-pct" data-pct>0,0%</div>
+                                            <div class="metric-value" data-value>R$ 0</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="metric metric--rest" id="metricSaldo">
+                                        <span class="metric-icon" aria-hidden="true">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="8"/><path d="M12 8v8M9.5 10.5h3.2a1.8 1.8 0 0 1 0 3.6H9.5h3.8a1.8 1.8 0 0 1 0 3.6H9"/></svg>
+                                        </span>
+                                        <div>
+                                            <div class="metric-name">Saldo não alocado</div>
+                                            <div class="metric-pct" data-pct>0,0%</div>
+                                            <div class="metric-value" data-value>R$ 0</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="status-list">
+                                    <div id="rowNecessidades" class="status-item">
+                                        <span class="ic" data-icon>✓</span>
+                                        <div>
+                                            <div class="status-kicker">Necessidades · meta 50% · <span data-pct>0%</span></div>
+                                            <span data-text>-</span>
+                                        </div>
+                                    </div>
+                                    <div id="rowDesejos" class="status-item">
+                                        <span class="ic" data-icon>✓</span>
+                                        <div>
+                                            <div class="status-kicker">Desejos · meta 30% · <span data-pct>0%</span></div>
+                                            <span data-text>-</span>
+                                        </div>
+                                    </div>
+                                    <div id="rowPoupanca" class="status-item">
+                                        <span class="ic" data-icon>✓</span>
+                                        <div>
+                                            <div class="status-kicker">Poupança · meta 20% · <span data-pct>0%</span></div>
+                                            <span data-text>-</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer>Simulador Financeiro 50-30-20 • HTML5 • CSS3 • JavaScript • Bootstrap 5</footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
