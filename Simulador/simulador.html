@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <!-- Codificação UTF-8 preserva acentos; viewport adapta a interface a celulares e tablets. -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simulador Financeiro</title>
+    <!-- Bibliotecas externas de estilo e tipografia; o CSS local complementa a identidade visual. -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,12 +15,14 @@
 </head>
 <body>
 
+    <!-- Apresenta a regra 50/30/20 antes da entrada de dados para dar contexto. -->
     <header class="masterhead">
         <div class="container content-width">
             <div class="eyebrow">Simulador Financeiro</div>
             <h1 class="title">Planejamento 50-30-20</h1>
             <p class="subtitle">Informe a sua renda mensal e o que você já gastou em cada categoria. O Simulador calcula os percentuais reais e compara com a regra recomendada.</p>
 
+            <!-- Três cartões resumem as proporções recomendadas pela regra 50/30/20. -->
             <div class="rule-cards">
                 <article class="rule-card rule-card--needs">
                     <span class="rule-icon" aria-hidden="true">
@@ -61,6 +65,7 @@
         </div>
     </header>
 
+    <!-- A grade responsiva reserva uma coluna para entradas e outra para o diagnóstico. -->
     <main>
         <div class="container content-width">
             <div class="row g-4 align-items-stretch">
@@ -72,6 +77,8 @@
                             <span class="num">01 · Entrada</span>
                         </div>
                         <div class="panel-body">
+                            <!-- IDs conectam os campos ao JavaScript; min e step restringem os valores numéricos. -->
+                            <!-- novalidate permite que o script apresente sua própria validação e mensagens. -->
                             <form id="budgetForm" novalidate>
                                 <div class="field">
                                     <label class="field-label" for="renda">
@@ -136,6 +143,7 @@
                                     </div>
                                 </div>
 
+                                <!-- Submit calcula o orçamento; type=button evita envio do formulário ao limpar. -->
                                 <div class="form-actions">
                                     <button type="submit" class="btn-calc">Calcular</button>
                                     <button type="button" id="resetBtn" class="btn-reset">Limpar</button>
@@ -151,11 +159,13 @@
                             <h2>Diagnóstico</h2>
                             <span class="num">02 · Resultados</span>
                         </div>
+                        <!-- O script troca o estado vazio pelos resultados depois do cálculo. -->
                         <div class="panel-body" id="resultsArea">
                             <div class="empty-state" id="emptyState">
                                 <div class="glyph">◎</div>
                                 Preencha o formulário e clique em <strong>Calcular</strong> para ver o diagnóstico do seu orçamento.
                             </div>
+                            <!-- Começa oculto (d-none); os elementos com IDs/data-* são atualizados pelo script.js. -->
                             <div id="resultsContent" class="d-none">
                                 <div class="summary-grid">
                                     <div>
@@ -177,6 +187,7 @@
                                     <span><strong>Distribuição real</strong> valores informados</span>
                                 </div>
 
+                                <!-- Métricas e gráfico mostram os valores informados e o saldo restante. -->
                                 <div class="donut-board">
                                     <div class="metric metric--needs" id="metricNecessidades">
                                         <span class="metric-icon" aria-hidden="true">
@@ -201,6 +212,7 @@
                                     </div>
 
                                     <div class="chart-wrap">
+                                        <!-- Chart.js desenha o gráfico neste canvas após o formulário ser calculado. -->
                                         <canvas id="donutChart" aria-label="Distribuição da renda"></canvas>
                                         <div class="chart-center">
                                             <div class="chart-renda" id="donutRenda">R$ 0</div>
@@ -231,6 +243,7 @@
                                     </div>
                                 </div>
 
+                                <!-- Linhas de status recebem classes e mensagens conforme cada meta atingida. -->
                                 <div class="status-list">
                                     <div id="rowNecessidades" class="status-item">
                                         <span class="ic" data-icon>✓</span>
@@ -265,6 +278,7 @@
 
     <footer>Simulador Financeiro 50-30-20 • HTML5 • CSS3 • JavaScript • Bootstrap 5</footer>
 
+    <!-- Ordem importa: primeiro dependências, depois o script que usa Chart.js e os elementos do HTML. -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
     <script src="script.js"></script>

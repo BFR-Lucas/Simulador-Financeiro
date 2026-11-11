@@ -1,25 +1,33 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <!-- Define codificação e ajuste responsivo para caracteres em português e telefones. -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Descrição usada por mecanismos de busca e título exibido na aba do navegador. -->
     <meta name="description" content="Educação financeira: aprenda a organizar seu dinheiro e acesse o Simulador Financeiro 50-30-20.">
     <title>Educação Financeira | Simulador Financeiro</title>
+    <!-- Conexões antecipadas reduzem a espera ao carregar recursos hospedados nesses serviços. -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <!-- Bootstrap fornece a grade e utilitários de layout responsivo usados nesta página. -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Estilos próprios do projeto; separado do HTML para facilitar os ajustes. -->
     <link rel="stylesheet" href="index.css">
 </head>
+<!-- Manter rodapé ao final -->
 <body class="d-flex flex-column min-vh-100">
-  
+    <!-- Conteúdo principal -->
     <main class="flex-grow-1 py-4 py-md-5">
         <div class="container">
             <div class="card home-card border-0 rounded-4 bg-white p-4 p-lg-5">
+                <!-- A grade do Bootstrap organiza a ilustração e o texto lado a lado em telas grandes. -->
                 <div class="row align-items-center g-4 g-lg-5">
 
                     <div class="col-12 col-lg-5 d-flex justify-content-center">
+                        <!-- SVG inline evita uma imagem externa e permite descrição acessível pelo aria-label. -->
                         <svg class="img-fluid hero-art" viewBox="0 0 400 360" role="img" aria-label="Ilustração de uma carteira com moedas, gráfico de crescimento e lista de tarefas concluídas">
                             <circle cx="200" cy="180" r="160" fill="#eef8f4"/>
 
@@ -62,6 +70,7 @@
                             Educação financeira é o processo de adquirir conhecimentos e desenvolver as habilidades necessárias para tomar decisões informadas e adequadas sobre o uso do seu dinheiro. Ela não se resume a saber economizar; pois também diz respeito à capacidade de gerenciar de forma inteligente os recursos disponíveis.
                         </p>
 
+                        <!-- Cartão agrupa a explicação e usa ícone decorativo oculto de leitores de tela. -->
                         <div class="info-card d-flex gap-3 p-3 p-md-4 rounded-4">
                             <span class="info-icon" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.7.6 1 1.3 1 2.1h5c0-.8.3-1.5 1-2.1A6 6 0 0 0 12 3Z"/></svg>
@@ -71,6 +80,7 @@
                                 <p class="small text-secondary mb-0">
                                     A importância da educação financeira reside em seu impacto direto na qualidade de vida e no bem-estar geral, indo muito além da simples gestão de dívidas. O conhecimento financeiro pode ser um instrumento de proteção e autonomia, permitindo que você atinja a estabilidade em diversas áreas:
                                     
+                                    <!-- Lista separa benefícios em itens escaneáveis e semanticamente organizados. -->
                                     <ul class="small text-secondary mb-0">
                                     <li>Reduza o estresse e a ansiedade: a má gestão financeira, o aumento das dívidas e a falta de planejamento podem gerar estresse e ansiedade. Por isso, um maior controle sobre as finanças pode contribuir efetivamente para uma melhora na qualidade de vida;</li>
                                     
@@ -85,6 +95,7 @@
                         </div>
 
                         <div class="d-grid d-md-block mt-4">
+                            <!-- Caminho para o botão da página principal direto para o simulador. -->
                             <a href="Simulador/simulador.html" class="btn btn-home btn-lg rounded-3 px-4 py-3 d-inline-flex align-items-center justify-content-center gap-2">
                                 Acessar Simulador Financeiro
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -99,6 +110,7 @@
         </div>
     </main>
 
+    <!-- Rodapé fica fora do main para separar o conteúdo principal das informações finais. -->
     <footer>Simulador Financeiro 50-30-20 • HTML5 • CSS3 • JavaScript • Bootstrap 5</footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
